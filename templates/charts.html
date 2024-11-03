@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Charts</title>
+  </head>
+  <body>
+    <h1>Candlestick Chart</h1>
+    <div>{{ candlestick | safe }}</div>
+
+    <h2>Asset Charts</h2>
+    {% for chart in asset_charts %}
+      <div>{{ chart | safe }}</div>
+    {% endfor %}
+
+  </body>
+</html>

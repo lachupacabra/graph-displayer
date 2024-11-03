@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "graph-dislayer"
+version = "0.1.0"
+description = "A web application for generating cryptocurrency charts from uploaded data files."
+authors = ["Your Name"]
+readme = "README.md"
+
+[[tool.poetry.source]]
+name = "artifactory"
+url = "https://artifactory.global.square/artifactory/api/pypi/block-pypi/simple"
+priority = "primary"
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+flask = "^3.0.3"
+pandas = "^2.2.3"
+plotly = "^5.24.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
