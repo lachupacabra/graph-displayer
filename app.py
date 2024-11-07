@@ -14,17 +14,17 @@ def upload_file():
         df = pd.read_csv(file)
 
         # Assuming datetime is the first column and in UTC milliseconds
-        df['datetime'] = pd.to_datetime(df.iloc[:, 0], unit='ms')
+        df['date'] = pd.to_datetime(df['date'])
 
         # Generate candlestick chart
-        candlestick = go.Figure(data=[go.Candlestick(x=df['datetime'],
+        candlestick = go.Figure(data=[go.Candlestick(x=df['date'],
                         open=df['open'], high=df['high'],
                         low=df['low'], close=df['close'])])
 
         # Create line charts for each asset
         asset_charts = []
         for column in df.columns[1:]:
-            fig = px.line(df, x='datetime', y=column, title=f'{column} over Time')
+            fig = px.line(df, x='date', y=column, title=f'{column} over Time')
             asset_charts.append(fig.to_html(full_html=False))
 
         return render_template('charts.html', candlestick=candlestick.to_html(full_html=False), asset_charts=asset_charts)
@@ -40,4 +40,4 @@ def upload_file():
     '''
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
